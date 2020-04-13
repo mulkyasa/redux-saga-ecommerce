@@ -4,14 +4,20 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const { Sequelize } = require('sequelize');
 
-// Passing a connection URI
-const sequelize = new Sequelize('postgres://user:pass@example.com:5432/dbname')
-
 // Passing parameters separately (other dialects)
-const sequelize = new Sequelize('database', 'username', 'password', {
+const sequelize = new Sequelize('ecommercedb', 'postgres', '010203', {
   host: 'localhost',
-  dialect: /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
+  dialect: 'postgres'
 });
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
