@@ -1,6 +1,6 @@
 import React from "react";
 import List from "./List.js";
-import Carousel from "./Carousel"
+import Carousel from "./Carousel";
 
 export default function Box(props) {
   return (

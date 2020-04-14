@@ -29,10 +29,19 @@ code {
   left: 0;
 }
 
-.card{
+.no-underline {
+  text-decoration: none !important
+}
+
+.card {
   transition: box-shadow .4s;
 }
 
 .card:hover {
   box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+.color {
+  width: 20px;
+  height: 20px;
 }
