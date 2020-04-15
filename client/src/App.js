@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import history from './history';
 import Layout from './components/Layout';
-import AddForm from './components/AddForm';
+import AddForm from './containers/AddForm';
 import Overview from './components/Overview';
 
 export default function App() {

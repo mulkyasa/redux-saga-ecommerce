@@ -15,6 +15,13 @@ const read = async (path) =>
     .then((response) => response.data)
     .catch((err) => err);
 
+const add = async (path, params) => {
+  return await request
+    .post(path, params)
+    .then((response) => response.data)
+    .catch((err) => err);
+  }
+
 const PATH = "products";
 
 function* loadProduct() {
@@ -27,6 +34,31 @@ function* loadProduct() {
   }
 }
 
+function* postProduct(payload) {
+  const { id, title, rate, description, price, detailproduct } = payload;
+  console.log(payload, 'data')
+  yield put(
+    actions.postProductRedux(title, parseInt(rate), description, parseInt(price), detailproduct)
+  );
+  try {
+    const data = yield call(add, PATH, {
+      title,
+      rate,
+      description,
+      price,
+      detailproduct,
+    });
+    yield put(actions.postProductSuccess(data));
+    history.push("/product");
+  } catch (error) {
+    console.log(error);
+    yield put(actions.postProductFailure(id));
+  }
+}
+
 export default function* rootSaga() {
-  yield all([takeEvery("LOAD_PRODUCTS", loadProduct)]);
+  yield all([
+    takeEvery("LOAD_PRODUCTS", loadProduct),
+    takeEvery("ADD_TODO", postProduct),
+  ]);
 }
