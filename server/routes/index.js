@@ -4,10 +4,9 @@ var models = require('../api/models/index');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  models.products.findAll({}).then(function(todos) {
-    res.json(todos);
+  models.products.findAll({}).then(function(products) {
+    res.json(products);
   });
-  console.log(models.products)
 });
 
 router.post('/add', function(req, res) {

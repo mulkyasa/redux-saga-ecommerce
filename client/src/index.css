@@ -33,11 +33,11 @@ code {
   text-decoration: none !important
 }
 
-.card {
+.shadow-trans {
   transition: box-shadow .4s;
 }
 
-.card:hover {
+.shadow-trans:hover {
   box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
 

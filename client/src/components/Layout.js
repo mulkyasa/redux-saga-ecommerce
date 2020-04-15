@@ -1,5 +1,5 @@
 import React from "react";
-import List from "./List.js";
+import List from "../containers/List.js";
 import Carousel from "./Carousel";
 
 export default function Box(props) {
