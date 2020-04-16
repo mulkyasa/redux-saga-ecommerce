@@ -33,6 +33,11 @@ code {
   text-decoration: none !important
 }
 
+.desc-text {
+  margin-top: 0px;
+  font-size: 12px;
+}
+
 .shadow-trans {
   transition: box-shadow .4s;
 }

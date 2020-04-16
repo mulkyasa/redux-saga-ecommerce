@@ -8,8 +8,8 @@ class List extends Component {
   componentDidMount() {
     this.props.loadProduct()
   }
-
   render() {
+    console.log(this.props.products, 'list')
     const listItems = this.props.products.map((item, index) => 
       <Item key={index} product={{...item}} />
     )

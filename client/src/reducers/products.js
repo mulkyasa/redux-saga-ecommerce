@@ -7,26 +7,24 @@ const products = (state = [], action) => {
       })
     case 'LOAD_PRODUCT_FAILURE':
     case 'POST_PRODUCT':
-    return [
-      ...state,
-      {
-        title: action.title,
-        rate: action.rate,
-        description: action.description,
-        price: action.price,
-        detailproduct: action.detailproduct,
-        sent: true
-      }
-    ]
-
-    case 'POST_PRODUCT_SUCCESS':
-    case 'POST_PRODUCT_FAILURE':
-      return state.map((item) => {
-        if (item.id === action.id) {
-          item.sent = false;
+      console.log(action)
+      return [
+        ...state,
+        {
+          title: action.title,
+          rate: action.rate,
+          brand: action.brand,
+          description: action.description,
+          price: action.price,
+          detailproduct: action.detailproduct,
+          sent: true
         }
+      ]
+    case 'POST_PRODUCT_SUCCESS':
+      return state.map(item => {
         return item
-      })
+      }) 
+    case 'POST_PRODUCT_FAILURE':
     default:
       return state
   }

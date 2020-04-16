@@ -19,23 +19,22 @@ export const postProductSuccess = (product) => ({
   product
 });
 
-export const postProductFailure = (id) => ({
-  type: "POST_PRODUCT_FAILURE",
-  id
+export const postProductFailure = () => ({
+  type: "POST_PRODUCT_FAILURE"
 });
 
 export const postProductRedux = (
-  id,
   title,
   rate,
+  brand,
   description,
   price,
   detailproduct
 ) => ({
   type: "POST_PRODUCT",
-  id,
   title,
   rate,
+  brand,
   description,
   price,
   detailproduct,
@@ -44,6 +43,7 @@ export const postProductRedux = (
 export const postProduct = (
   title,
   rate,
+  brand,
   description,
   price,
   detailproduct
@@ -51,6 +51,7 @@ export const postProduct = (
   type: "ADD_PRODUCT",
   title,
   rate,
+  brand,
   description,
   price,
   detailproduct,
