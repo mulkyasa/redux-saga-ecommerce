@@ -23,7 +23,6 @@ export default function Item(props) {
                 starSpacing="1px"
               />
             </div>
-            <br />
             <p className="card-text desc-text">{props.product.description}</p>
           </div>
         </div>

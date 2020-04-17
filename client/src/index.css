@@ -18,12 +18,12 @@ code {
 }
 
 .carousel-item {
-  height: 24rem;
+  height: 28rem;
 }
 
 .carousel-item > img {
   background-size: cover;
-  background-position: center bottom;
+  background-position: center center;
   position: absolute;
   top: 0;
   left: 0;
