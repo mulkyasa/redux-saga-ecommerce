@@ -1,8 +1,6 @@
 import React from "react";
 
 export default function Overview(props) {
-  
-
   return (
     <div className="container pt-4">
       <div className="card">
