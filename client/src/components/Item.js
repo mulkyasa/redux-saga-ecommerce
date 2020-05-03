@@ -3,6 +3,15 @@ import { Link } from "react-router-dom";
 import StarRatings from "react-star-ratings";
 
 export default function Item(props) {
+  function convertPrice(price = 0, currency = "Rp") {
+    price = price
+      .toString()
+      .replace(/\D/g, "")
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+    price = price && `${currency} ${price}`;
+    return price;
+  }
+  
   return (
     <div className="col-md-3">
       <Link to={`/overview/${props.product.id}`}>
@@ -14,7 +23,7 @@ export default function Item(props) {
           />
           <div className="card-body text-dark">
             <h5 className="card-title">{props.product.title}</h5>
-            <h6>Rp{props.product.price}</h6>
+            <h6>{convertPrice(props.product.price)}</h6>
             <div className="text-right">
               <StarRatings
                 starRatedColor="#ffce3d"
