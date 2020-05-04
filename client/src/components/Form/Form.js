@@ -67,5 +67,4 @@ export function Form(props) {
         </div>
       </div>
     );
-  return <></>;
 }

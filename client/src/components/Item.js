@@ -8,7 +8,7 @@ export default function Item(props) {
       .toString()
       .replace(/\D/g, "")
       .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
-    price = price && `${currency} ${price}`;
+    price = price && `${currency}${price}`;
     return price;
   }
   

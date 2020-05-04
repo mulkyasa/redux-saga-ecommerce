@@ -26,6 +26,7 @@ class AddForm extends Component {
   handleInputChange = (event) => {
     let { name, value } = event.target;
     this.setState({ [name]: value });
+    console.log([name], value);
   };
 
   handleSubmit = (event) => {
@@ -39,6 +40,7 @@ class AddForm extends Component {
     let { title, brand, price, stock, detail, description } = this.state;
 
     let forms = [
+      { type: "file" },
       {
         name: "title",
         label: "Title",
@@ -79,8 +81,7 @@ class AddForm extends Component {
         type: "textarea",
         rows: 4,
         value: detail,
-      },
-      { type: "file" },
+      }
     ];
 
     let formItems = forms.map((form, i) => {
