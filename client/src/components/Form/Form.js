@@ -5,12 +5,12 @@ export function Form(props) {
   if (type === "text")
     return (
       <div className="form-group row">
-        <label htmlFor="title" className="col-sm-2 col-form-label">
+        <label htmlFor={name} className="col-sm-2 col-form-label">
           {label}
         </label>
         <div className="col-sm-10">
           <input
-            id="label"
+            id={name}
             className="form-control"
             type="text"
             name={name}
@@ -26,12 +26,12 @@ export function Form(props) {
   else if (type === "number")
     return (
       <div className="form-group row">
-        <label htmlFor="rate" className="col-sm-2 col-form-label">
+        <label htmlFor={name} className="col-sm-2 col-form-label">
           {label}
         </label>
         <div className="col-sm-10">
           <input
-            id={label}
+            id={name}
             className="form-control"
             type="number"
             name={name}

@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Navbar(props) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="/">
+    <nav className="navbar navbar-expand-lg navbar-white bg-white shadow-sm">
+      <a className="navbar-brand text-dark py-0" href="/">
         Kekulineran
       </a>
       <button
@@ -19,18 +19,11 @@ export default function Navbar(props) {
       </button>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
-            <a className="nav-link" href="/">
-              Home <span className="sr-only">(current)</span>
-            </a>
-          </li>
-        </ul>
-        <span className="navbar-text">
+        {/* <span className="navbar-text">
           <i className="fab fa-instagram mr-2"></i>
           <i className="fab fa-whatsapp mr-2"></i>
           <i className="fab fa-facebook-f mr-2"></i>
-        </span>
+        </span> */}
       </div>
     </nav>
   );

@@ -7,7 +7,7 @@ export default function Box(props) {
   return (
     <Fragment>
       <Navbar />
-      <div className="container mt-4">
+      <div className="container mt-3">
         <Carousel />
         <List />
         <nav aria-label="Page navigation">

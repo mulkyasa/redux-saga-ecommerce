@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { postProduct } from "../actions";
 import { connect } from "react-redux";
 import { Form } from "../components/Form/Form";
 import Upload from "../components/Form/Upload";
+import Navbar from "../components/Navbar" 
 
 class AddForm extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class AddForm extends Component {
   };
 
   render() {
-    let { title, brand, price, stock, detail, description } = this.state;
+    let { title, brand, color, price, stock, detail, description } = this.state;
 
     let forms = [
       { type: "file" },
@@ -61,10 +62,16 @@ class AddForm extends Component {
         value: description,
       },
       {
+        name: "color",
+        label: "Color",
+        type: "text",
+        value: color
+      },
+      {
         name: "price",
         label: "Price",
         type: "text",
-        inpurMode: "numeric",
+        inputMode: "numeric",
         min: 0,
         value: price,
       },
@@ -95,26 +102,29 @@ class AddForm extends Component {
     });
 
     return (
-      <div className="container pt-4">
-        <div className="card shadow">
-          <div className="card-body">
-            <h5 className="mb-0">Add New Product</h5>
-            <small className="text-muted">
-              Describe your product and make them interested.
-            </small>
-            <hr />
-            <form className="mt-4" onSubmit={this.handleSubmit}>
-              {formItems}
-              <button type="submit" className="btn btn-success">
-                <i className="fa fa-save mr-sm-2"></i>Save
-              </button>
-              <Link to="/">
-                <button className="btn">Cancel</button>
-              </Link>
-            </form>
+      <Fragment>
+        <Navbar/>
+        <div className="container pt-4">
+          <div className="card shadow">
+            <div className="card-body">
+              <h5 className="mb-0">Add New Product</h5>
+              <small className="text-muted">
+                Describe your product and make them interested.
+              </small>
+              <hr />
+              <form className="mt-4" onSubmit={this.handleSubmit}>
+                {formItems}
+                <button type="submit" className="btn btn-success">
+                  <i className="fa fa-save mr-sm-2"></i>Save
+                </button>
+                <Link to="/">
+                  <button className="btn">Cancel</button>
+                </Link>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
+      </Fragment>
     );
   }
 }

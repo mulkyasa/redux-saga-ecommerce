@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Swal from "sweetalert2";
 import Dropzone from "./Dropzone";
 
@@ -56,17 +56,15 @@ export default class Upload extends Component {
 
   render() {
     return (
-      <div className="row">
-        <span className="name">Upload Image</span>
-        <div className="value">
-          <div className="row">
-            <div className="col-auto">
-              <Dropzone onFileAdded={this.onFileAdded} disabled={false} />
-            </div>
-            <div className="col-auto">{this.state.image}</div>
-          </div>
+      <Fragment>
+        <label htmlFor="upload" className="col-sm-2 col-form-label">
+          Upload Image
+        </label>
+        <div className="col-sm-4">
+          <Dropzone className="form-control-file" onFileAdded={this.onFileAdded} disabled={false} />
         </div>
-      </div>
+        <div className="col-sm-4">{this.state.image}</div>
+      </Fragment>
     );
   }
 }

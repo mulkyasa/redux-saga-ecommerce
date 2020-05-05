@@ -4,7 +4,7 @@ export default function Carousel(props) {
   return (
     <div
       id="carouselExampleIndicators"
-      className="carousel slide"
+      className="carousel slide mb-3"
       data-ride="carousel"
     >
       <ol className="carousel-indicators">
