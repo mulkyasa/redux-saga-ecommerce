@@ -38,7 +38,7 @@ class AddForm extends Component {
   };
 
   render() {
-    let { title, brand, color, price, stock, detail, description } = this.state;
+    let { title, brand, color, price, stock, description } = this.state;
 
     let forms = [
       { type: "file" },
@@ -58,7 +58,7 @@ class AddForm extends Component {
         name: "description",
         label: "Description",
         type: "textarea",
-        rows: 4,
+        rows: 8,
         value: description,
       },
       {
@@ -70,7 +70,7 @@ class AddForm extends Component {
       {
         name: "price",
         label: "Price",
-        type: "text",
+        type: "number",
         inputMode: "numeric",
         min: 0,
         value: price,
@@ -81,13 +81,6 @@ class AddForm extends Component {
         type: "number",
         min: 0,
         value: stock,
-      },
-      {
-        name: "detail",
-        label: "Detail Product",
-        type: "textarea",
-        rows: 4,
-        value: detail,
       }
     ];
 
@@ -104,7 +97,7 @@ class AddForm extends Component {
     return (
       <Fragment>
         <Navbar/>
-        <div className="container pt-4">
+        <div className="container pt-3">
           <div className="card shadow">
             <div className="card-body">
               <h5 className="mb-0">Add New Product</h5>
@@ -115,7 +108,7 @@ class AddForm extends Component {
               <form className="mt-4" onSubmit={this.handleSubmit}>
                 {formItems}
                 <button type="submit" className="btn btn-success">
-                  <i className="fa fa-save mr-sm-2"></i>Save
+                  Save
                 </button>
                 <Link to="/">
                   <button className="btn">Cancel</button>

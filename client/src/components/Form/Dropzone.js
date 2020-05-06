@@ -63,7 +63,6 @@ export default class Dropzone extends Component {
           width="5rem"
           height="auto"
         />
-        <span>Upload Image</span>
       </div>
     );
   }

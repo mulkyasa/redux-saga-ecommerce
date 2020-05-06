@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export function Form(props) {
   let { name, label, type, onChange, inputMode } = props;
@@ -29,7 +29,12 @@ export function Form(props) {
         <label htmlFor={name} className="col-sm-2 col-form-label">
           {label}
         </label>
-        <div className="col-sm-10">
+        <div className="input-group col-sm-10">
+          {label === "Price" ? (
+            <div className="input-group-prepend">
+              <span className="input-group-text">Rp</span>
+            </div>
+          ) : null}
           <input
             id={name}
             className="form-control"
@@ -47,10 +52,7 @@ export function Form(props) {
   else if (type === "textarea")
     return (
       <div className="form-group row">
-        <label
-          htmlFor={label}
-          className="col-sm-2 col-form-label"
-        >
+        <label htmlFor={label} className="col-sm-2 col-form-label">
           {label}
         </label>
         <div className="col-sm-10">
@@ -58,7 +60,6 @@ export function Form(props) {
             id={label}
             className="form-control"
             name={name}
-            placeholder={label}
             value={props.value}
             required={true}
             onChange={onChange}

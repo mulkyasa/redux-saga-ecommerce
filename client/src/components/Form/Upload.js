@@ -26,9 +26,9 @@ export default class Upload extends Component {
                     src={e.target.result}
                     title={file.name}
                     style={{
-                      height: "10rem",
+                      height: "7rem",
                       border: "1px solid black",
-                      margin: "10px 5px 0 0",
+                      margin: "0 0 0 15px",
                     }}
                     alt="Uploaded file"
                   />
@@ -60,10 +60,12 @@ export default class Upload extends Component {
         <label htmlFor="upload" className="col-sm-2 col-form-label">
           Upload Image
         </label>
-        <div className="col-sm-4">
+        <div className="col-10 img-drop">
           <Dropzone className="form-control-file" onFileAdded={this.onFileAdded} disabled={false} />
+          <div className="img-preview">
+            {this.state.image}
+          </div>
         </div>
-        <div className="col-sm-4">{this.state.image}</div>
       </Fragment>
     );
   }
