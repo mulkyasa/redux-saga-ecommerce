@@ -24,36 +24,40 @@ export const postProductFailure = () => ({
 });
 
 export const postProductRedux = (
+  image,
   title,
-  rate,
   brand,
   description,
+  color,
   price,
-  detailproduct
+  stock
 ) => ({
   type: "POST_PRODUCT",
+  image,
   title,
-  rate,
   brand,
   description,
+  color,
   price,
-  detailproduct,
+  stock
 });
 
 export const postProduct = (
+  image,
   title,
-  rate,
   brand,
   description,
+  color,
   price,
-  detailproduct
+  stock
 ) => ({
   type: "ADD_PRODUCT",
+  image,
   title,
-  rate,
   brand,
   description,
+  color,
   price,
-  detailproduct,
+  stock
 });
 // end post product data

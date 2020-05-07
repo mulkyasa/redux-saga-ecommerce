@@ -11,12 +11,13 @@ const products = (state = [], action) => {
       return [
         ...state,
         {
+          image: action.image,
           title: action.title,
-          rate: action.rate,
           brand: action.brand,
           description: action.description,
+          color: action.color,
           price: action.price,
-          detailproduct: action.detailproduct,
+          stock: action.stock,
           sent: true
         }
       ]

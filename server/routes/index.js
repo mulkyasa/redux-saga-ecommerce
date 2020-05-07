@@ -21,12 +21,13 @@ router.get("/:id", function (req, res, next) {
 router.post("/", function (req, res) {
   models.products
     .create({
+      image: req.body.image,
       title: req.body.title,
-      rate: req.body.rate,
-      description: req.body.description,
-      price: req.body.price,
       brand: req.body.brand,
-      detailproduct: req.body.detailproduct,
+      description: req.body.description,
+      color: req.body.color,
+      price: req.body.price,
+      stock: req.body.stock
     })
     .then(function (products) {
       res.json(products);

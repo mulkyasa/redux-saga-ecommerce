@@ -36,18 +36,20 @@ function* loadProduct() {
 }
 
 function* postProduct(payload) {
-  const { title, rate, description, price, detailproduct } = payload;
+  const { image, title, brand, description, color, price, stock } = payload;
   console.log(payload, 'data')
   yield put(
-    actions.postProductRedux(title, parseInt(rate), description, parseInt(price), detailproduct)
+    actions.postProductRedux(image, title, brand, description, color, parseInt(price), parseInt(stock))
   );
   try {
     const data = yield call(add, PATH, {
+      image,
       title,
-      rate,
+      brand,
       description,
+      color,
       price,
-      detailproduct,
+      stock
     });
     yield put(actions.postProductSuccess(data));
     history.push("/");

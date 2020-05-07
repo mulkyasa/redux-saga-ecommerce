@@ -111,7 +111,7 @@ class AddForm extends Component {
                   Save
                 </button>
                 <Link to="/">
-                  <button className="btn">Cancel</button>
+                  <button type="button" className="btn">Cancel</button>
                 </Link>
               </form>
             </div>

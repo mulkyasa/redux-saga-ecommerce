@@ -58,7 +58,7 @@ export default class Upload extends Component {
     return (
       <Fragment>
         <label htmlFor="upload" className="col-sm-2 col-form-label">
-          Upload Image
+          Product Photo
         </label>
         <div className="col-10 img-drop">
           <Dropzone className="form-control-file" onFileAdded={this.onFileAdded} disabled={false} />
