@@ -36,10 +36,9 @@ function* loadProduct() {
 }
 
 function* postProduct(payload) {
-  const { image, title, brand, description, color, price, stock } = payload;
-  console.log(payload, 'data')
+  const { image, title, brand, description, colour, capacity, price, stock } = payload;
   yield put(
-    actions.postProductRedux(image, title, brand, description, color, parseInt(price), parseInt(stock))
+    actions.postProductRedux(image, title, brand, description, colour, capacity, parseInt(price), parseInt(stock))
   );
   try {
     const data = yield call(add, PATH, {
@@ -47,7 +46,8 @@ function* postProduct(payload) {
       title,
       brand,
       description,
-      color,
+      colour,
+      capacity,
       price,
       stock
     });

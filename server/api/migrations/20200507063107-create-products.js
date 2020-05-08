@@ -20,7 +20,10 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
-      color: {
+      colour: {
+        type: Sequelize.JSON
+      },
+      capacity: {
         type: Sequelize.JSON
       },
       price: {

@@ -28,7 +28,8 @@ export const postProductRedux = (
   title,
   brand,
   description,
-  color,
+  colour,
+  capacity,
   price,
   stock
 ) => ({
@@ -37,7 +38,8 @@ export const postProductRedux = (
   title,
   brand,
   description,
-  color,
+  colour,
+  capacity,
   price,
   stock
 });
@@ -47,7 +49,8 @@ export const postProduct = (
   title,
   brand,
   description,
-  color,
+  colour,
+  capacity,
   price,
   stock
 ) => ({
@@ -56,7 +59,8 @@ export const postProduct = (
   title,
   brand,
   description,
-  color,
+  colour,
+  capacity,
   price,
   stock
 });

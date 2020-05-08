@@ -26,6 +26,7 @@ router.post("/", function (req, res) {
       brand: req.body.brand,
       description: req.body.description,
       color: req.body.color,
+      capacities: req.body.capacities,
       price: req.body.price,
       stock: req.body.stock
     })

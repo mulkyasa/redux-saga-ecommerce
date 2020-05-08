@@ -15,7 +15,8 @@ const products = (state = [], action) => {
           title: action.title,
           brand: action.brand,
           description: action.description,
-          color: action.color,
+          colour: action.colour,
+          capacity: action.capacity,
           price: action.price,
           stock: action.stock,
           sent: true

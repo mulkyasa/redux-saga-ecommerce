@@ -68,4 +68,27 @@ export function Form(props) {
         </div>
       </div>
     );
+  else if (type === "option")
+    return (
+      <div className="form-group row">
+        <label htmlFor={label} className="col-sm-2 col-form-label">
+          {label}
+        </label>
+        <div className="col-sm-10">
+          <select
+            id={label}
+            className="form-control"
+            name={name}
+            value={props.value}
+            required={true}
+            onChange={event => onChange(event, name)}
+          >
+            <option defaultValue disabled>Select {name}...</option>
+            {props.values.map((value, index) => (
+              <option key={index} value={value}>{value}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+    );
 }

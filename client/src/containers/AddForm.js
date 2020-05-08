@@ -4,7 +4,7 @@ import { postProduct } from "../actions";
 import { connect } from "react-redux";
 import { Form } from "../components/Form/Form";
 import Upload from "../components/Form/Upload";
-import Navbar from "../components/Navbar" 
+import Navbar from "../components/Navbar";
 
 class AddForm extends Component {
   constructor(props) {
@@ -13,10 +13,11 @@ class AddForm extends Component {
       file: {},
       title: "",
       brand: "",
+      description: "",
+      color: [],
+      capacities: [],
       price: "",
       stock: "",
-      detail: "",
-      description: "",
     };
   }
 
@@ -27,7 +28,6 @@ class AddForm extends Component {
   handleInputChange = (event) => {
     let { name, value } = event.target;
     this.setState({ [name]: value });
-    console.log([name], value);
   };
 
   handleSubmit = (event) => {
@@ -38,7 +38,7 @@ class AddForm extends Component {
   };
 
   render() {
-    let { title, brand, color, price, stock, description } = this.state;
+    let { title, brand, description, colour, capacity, price, stock } = this.state;
 
     let forms = [
       { type: "file" },
@@ -62,10 +62,18 @@ class AddForm extends Component {
         value: description,
       },
       {
-        name: "color",
-        label: "Color",
-        type: "text",
-        value: color
+        name: "colour",
+        label: "Colour",
+        type: "option",
+        values: ["White", "Black", "Silver", "Gold"],
+        value: colour
+      },
+      {
+        name: "capacity",
+        label: "Capacity",
+        type: "option",
+        values: [8, 16, 32, 64, 128, 256, 512].map(x => `${x}GB`),
+        value: capacity
       },
       {
         name: "price",
@@ -102,7 +110,7 @@ class AddForm extends Component {
             <div className="card-body">
               <h5 className="mb-0">Add New Product</h5>
               <small className="text-muted">
-                Describe your product and make them interested.
+                Describe your product
               </small>
               <hr />
               <form className="mt-4" onSubmit={this.handleSubmit}>
