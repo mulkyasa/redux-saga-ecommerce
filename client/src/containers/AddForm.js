@@ -14,8 +14,10 @@ class AddForm extends Component {
       title: "",
       brand: "",
       description: "",
-      color: [],
-      capacities: [],
+      colourInput: "",
+      colour: [],
+      capacityInput: "",
+      capacity: [],
       price: "",
       stock: "",
     };
@@ -23,6 +25,28 @@ class AddForm extends Component {
 
   handleFileChange = (file) => {
     this.setState({ file });
+  };
+
+  handleVariationChange = (event) => {
+    this.setState({
+      colourInput: event.target.value,
+      capacityInput: event.target.value
+    });
+  };
+
+  variationList = () => {
+    this.setState({
+      colour: [...this.state.colour, this.state.colourInput],
+      capacity: [...this.state.capacity, this.state.capacityInput]
+    });
+    this.setState({
+      colourInput: "",
+      capacity: ""
+    });
+  };
+
+  addVariation = () => {
+    this.variationList();
   };
 
   handleInputChange = (event) => {
@@ -38,7 +62,7 @@ class AddForm extends Component {
   };
 
   render() {
-    let { title, brand, description, colour, capacity, price, stock } = this.state;
+    let { title, brand, description, colour, capacity, colourInput, capacityInput, price, stock } = this.state;
 
     let forms = [
       { type: "file" },
@@ -64,16 +88,18 @@ class AddForm extends Component {
       {
         name: "colour",
         label: "Colour",
-        type: "option",
-        values: ["White", "Black", "Silver", "Gold"],
-        value: colour
+        type: "variation",
+        addVariation: this.addVariation,
+        value: colour,
+        input: colourInput
       },
       {
         name: "capacity",
         label: "Capacity",
-        type: "option",
-        values: [8, 16, 32, 64, 128, 256, 512].map(x => `${x}GB`),
-        value: capacity
+        type: "variation",
+        addVariation: this.addVariation,
+        value: capacity,
+        input: capacityInput
       },
       {
         name: "price",
@@ -89,7 +115,7 @@ class AddForm extends Component {
         type: "number",
         min: 0,
         value: stock,
-      }
+      },
     ];
 
     let formItems = forms.map((form, i) => {
@@ -99,19 +125,21 @@ class AddForm extends Component {
             <Upload onFileChange={this.handleFileChange} />
           </div>
         );
+      if (form.type === "variation")
+        return (
+          <Form key={i} {...form} onChange={this.handleVariationChange} />
+        );
       return <Form key={i} {...form} onChange={this.handleInputChange} />;
     });
 
     return (
       <Fragment>
-        <Navbar/>
+        <Navbar />
         <div className="container pt-3">
           <div className="card shadow">
             <div className="card-body">
               <h5 className="mb-0">Add New Product</h5>
-              <small className="text-muted">
-                Describe your product
-              </small>
+              <small className="text-muted">Describe your product</small>
               <hr />
               <form className="mt-4" onSubmit={this.handleSubmit}>
                 {formItems}
@@ -119,7 +147,9 @@ class AddForm extends Component {
                   Save
                 </button>
                 <Link to="/">
-                  <button type="button" className="btn">Cancel</button>
+                  <button type="button" className="btn">
+                    Cancel
+                  </button>
                 </Link>
               </form>
             </div>

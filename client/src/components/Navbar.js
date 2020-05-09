@@ -4,7 +4,7 @@ export default function Navbar(props) {
   return (
     <nav className="navbar navbar-expand-lg navbar-white bg-white shadow-sm">
       <a className="navbar-brand text-dark py-0" href="/">
-        Kekulineran
+        Go Gadget
       </a>
       <button
         className="navbar-toggler"

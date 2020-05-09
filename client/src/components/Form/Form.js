@@ -68,27 +68,36 @@ export function Form(props) {
         </div>
       </div>
     );
-  else if (type === "option")
+  else if (type === "variation")
     return (
       <div className="form-group row">
-        <label htmlFor={label} className="col-sm-2 col-form-label">
+        <label htmlFor={name} className="col-sm-2 col-form-label">
           {label}
         </label>
-        <div className="col-sm-10">
-          <select
-            id={label}
+        <div className="col-sm-10 input-group">
+          <input
+            id={name}
             className="form-control"
+            type="text"
             name={name}
-            value={props.value}
-            required={true}
-            onChange={event => onChange(event, name)}
-          >
-            <option defaultValue disabled>Select {name}...</option>
-            {props.values.map((value, index) => (
-              <option key={index} value={value}>{value}</option>
-            ))}
-          </select>
+            placeholder={label}
+            value={props.input}
+            onChange={onChange}
+            inputMode="text"
+            autoComplete="off"
+            aria-describedby={`${name}`}
+          />
+          <div className="input-group-append">
+            <button type="button" className="btn btn-outline-secondary" onClick={props.addVariation} id={`${name}`}>
+              Add {name}
+            </button>
+          </div>
         </div>
+        <ul>
+          {props.value.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
+        </ul>
       </div>
     );
 }
