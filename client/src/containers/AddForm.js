@@ -68,8 +68,7 @@ class AddForm extends Component {
 
   deleteColourVariation = (event) => {
     const array = [...this.state.colour];
-    const index = array.getParents(5).indexOf(event.target.value);
-    console.log(index)
+    const index = array.indexOf(event.target.value);
 
     if (index !== -1) {
       array.splice(index, 1);
