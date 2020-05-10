@@ -27,26 +27,42 @@ class AddForm extends Component {
     this.setState({ file });
   };
 
-  handleVariationChange = (event) => {
+  colourVariationChange = (event) => {
     this.setState({
       colourInput: event.target.value,
-      capacityInput: event.target.value
     });
   };
 
-  variationList = () => {
+  capacityVariationChange = (event) => {
+    this.setState({
+      capacityInput: event.target.value,
+    });
+  };
+
+  colourVariationList = () => {
     this.setState({
       colour: [...this.state.colour, this.state.colourInput],
-      capacity: [...this.state.capacity, this.state.capacityInput]
     });
     this.setState({
       colourInput: "",
-      capacity: ""
     });
   };
 
-  addVariation = () => {
-    this.variationList();
+  capacityVariationList = () => {
+    this.setState({
+      capacity: [...this.state.capacity, this.state.capacityInput],
+    });
+    this.setState({
+      capacityInput: "",
+    });
+  };
+
+  addColourVariation = () => {
+    this.colourVariationList();
+  };
+
+  addCapacityVariation = () => {
+    this.capacityVariationList();
   };
 
   handleInputChange = (event) => {
@@ -62,7 +78,23 @@ class AddForm extends Component {
   };
 
   render() {
-    let { title, brand, description, colour, capacity, colourInput, capacityInput, price, stock } = this.state;
+    let {
+      title,
+      brand,
+      description,
+      colour,
+      capacity,
+      colourInput,
+      capacityInput,
+      price,
+      stock,
+    } = this.state;
+    let {
+      addColourVariation,
+      addCapacityVariation,
+      colourVariationChange,
+      capacityVariationChange,
+    } = this;
 
     let forms = [
       { type: "file" },
@@ -89,17 +121,19 @@ class AddForm extends Component {
         name: "colour",
         label: "Colour",
         type: "variation",
-        addVariation: this.addVariation,
+        addVariation: addColourVariation,
         value: colour,
-        input: colourInput
+        input: colourInput,
+        onChange: colourVariationChange,
       },
       {
         name: "capacity",
         label: "Capacity",
         type: "variation",
-        addVariation: this.addVariation,
+        addVariation: addCapacityVariation,
         value: capacity,
-        input: capacityInput
+        input: capacityInput,
+        onChange: capacityVariationChange,
       },
       {
         name: "price",
@@ -125,10 +159,7 @@ class AddForm extends Component {
             <Upload onFileChange={this.handleFileChange} />
           </div>
         );
-      if (form.type === "variation")
-        return (
-          <Form key={i} {...form} onChange={this.handleVariationChange} />
-        );
+      if (form.type === "variation") return <Form key={i} {...form} />;
       return <Form key={i} {...form} onChange={this.handleInputChange} />;
     });
 

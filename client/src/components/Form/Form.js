@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 export function Form(props) {
   let { name, label, type, onChange, inputMode } = props;
@@ -70,34 +70,42 @@ export function Form(props) {
     );
   else if (type === "variation")
     return (
-      <div className="form-group row">
-        <label htmlFor={name} className="col-sm-2 col-form-label">
-          {label}
-        </label>
-        <div className="col-sm-10 input-group">
-          <input
-            id={name}
-            className="form-control"
-            type="text"
-            name={name}
-            placeholder={label}
-            value={props.input}
-            onChange={onChange}
-            inputMode="text"
-            autoComplete="off"
-            aria-describedby={`${name}`}
-          />
-          <div className="input-group-append">
-            <button type="button" className="btn btn-outline-secondary" onClick={props.addVariation} id={`${name}`}>
-              Add {name}
-            </button>
+      <Fragment>
+        <div className="form-group row">
+          <label htmlFor={name} className="col-sm-2 col-form-label">
+            {label}
+          </label>
+          <div className="col-sm-10 input-group">
+            <input
+              id={name}
+              className="form-control"
+              type="text"
+              name={name}
+              placeholder={label}
+              value={props.input}
+              onChange={onChange}
+              inputMode="text"
+              autoComplete="off"
+              aria-describedby={`${name}`}
+            />
+            <div className="input-group-append">
+              <button type="button" className="btn btn-outline-secondary" onClick={props.addVariation} id={`${name}`}>
+                Add {name}
+              </button>
+            </div>
+          </div>
+          <div className="row offset-sm-2">
+            {props.value.map((item, i) => (
+              <div key={i} className="col">
+                  <div className="card mt-2 bg-secondary">
+                    <div className="card-body py-1 px-2 text-white">
+                      {item}<a href="#" className="ml-2 text-white">x</a>
+                    </div>
+                  </div>
+              </div>
+            ))}
           </div>
         </div>
-        <ul>
-          {props.value.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
-        </ul>
-      </div>
+      </Fragment>
     );
 }
