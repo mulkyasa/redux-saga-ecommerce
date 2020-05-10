@@ -89,19 +89,27 @@ export function Form(props) {
               aria-describedby={`${name}`}
             />
             <div className="input-group-append">
-              <button type="button" className="btn btn-outline-secondary" onClick={props.addVariation} id={`${name}`}>
+              <button
+                type="button"
+                className="btn btn-outline-secondary"
+                onClick={props.addVariation}
+                id={`${name}`}
+              >
                 Add {name}
               </button>
             </div>
           </div>
           <div className="row offset-sm-2">
-            {props.value.map((item, i) => (
-              <div key={i} className="col">
-                  <div className="card mt-2 bg-secondary">
-                    <div className="card-body py-1 px-2 text-white">
-                      {item}<a href="#" className="ml-2 text-white">x</a>
-                    </div>
+            {props.value.map((item, index) => (
+              <div key={index} className="col-auto">
+                <div className="card mt-2">
+                  <div className="card-body py-1 px-2">
+                    {item}
+                    <a href="#" onClick={props.deleteVariation} className="ml-2">
+                      <i className="far fa-times-circle text-dark"></i>
+                    </a>
                   </div>
+                </div>
               </div>
             ))}
           </div>

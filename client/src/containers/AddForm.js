@@ -43,6 +43,7 @@ class AddForm extends Component {
     this.setState({
       colour: [...this.state.colour, this.state.colourInput],
     });
+    console.log(this.state.colour, this.state.colourInput)
     this.setState({
       colourInput: "",
     });
@@ -64,6 +65,22 @@ class AddForm extends Component {
   addCapacityVariation = () => {
     this.capacityVariationList();
   };
+
+  deleteColourVariation = (event) => {
+    const array = [...this.state.colour];
+    const index = array.getParents(5).indexOf(event.target.value);
+    console.log(index)
+
+    if (index !== -1) {
+      array.splice(index, 1);
+      this.setState({ colour: array });
+    }
+
+    // event.preventDefault();
+    // this.setState((state) => ({
+    //   colour: state.colour.slice(0, state.colour.length - 1)
+    // }));
+  }
 
   handleInputChange = (event) => {
     let { name, value } = event.target;
@@ -94,6 +111,7 @@ class AddForm extends Component {
       addCapacityVariation,
       colourVariationChange,
       capacityVariationChange,
+      deleteColourVariation
     } = this;
 
     let forms = [
@@ -125,6 +143,7 @@ class AddForm extends Component {
         value: colour,
         input: colourInput,
         onChange: colourVariationChange,
+        deleteVariation: deleteColourVariation
       },
       {
         name: "capacity",
