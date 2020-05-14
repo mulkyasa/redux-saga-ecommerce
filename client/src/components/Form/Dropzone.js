@@ -15,7 +15,6 @@ export default class Dropzone extends Component {
   onFileAdded = e => {
     if (this.props.disabled) return;
     const file = e.target.files;
-    console.log(file);
     
     if (this.props.onFileAdded) this.props.onFileAdded(file[0]);
   };

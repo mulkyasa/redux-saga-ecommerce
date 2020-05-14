@@ -84,6 +84,7 @@ class AddForm extends Component {
   handleInputChange = (event) => {
     let { name, value } = event.target;
     this.setState({ [name]: value });
+    console.log([name], value);
   };
 
   handleSubmit = (event) => {
