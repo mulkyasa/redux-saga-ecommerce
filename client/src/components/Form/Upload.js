@@ -40,7 +40,7 @@ export default class Upload extends Component {
         } else {
           Swal.fire({
             title: "Maximum file size exceeded",
-            text: "Please upload an image below 3 MB",
+            text: "Please upload an image below 3MB",
             type: "error",
           });
         }

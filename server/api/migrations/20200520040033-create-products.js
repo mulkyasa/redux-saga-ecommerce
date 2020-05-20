@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      image: {
+      file: {
         type: Sequelize.TEXT
       },
       title: {

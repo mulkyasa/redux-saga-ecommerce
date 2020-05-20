@@ -16,15 +16,15 @@ export const loadProduct = () => ({
 // start post product data
 export const postProductSuccess = (product) => ({
   type: "POST_PRODUCT_SUCCESS",
-  product
+  product,
 });
 
 export const postProductFailure = () => ({
-  type: "POST_PRODUCT_FAILURE"
+  type: "POST_PRODUCT_FAILURE",
 });
 
 export const postProductRedux = (
-  image,
+  file,
   title,
   brand,
   description,
@@ -34,18 +34,20 @@ export const postProductRedux = (
   stock
 ) => ({
   type: "POST_PRODUCT",
-  image,
+  ...(file && { file }),
   title,
   brand,
   description,
-  colour,
-  capacity,
+  ...(colour instanceof Array && { colour: JSON.stringify(colour) }),
+  ...(capacity instanceof Array && {
+    capacity: JSON.stringify(capacity),
+  }),
   price,
-  stock
+  stock,
 });
 
 export const postProduct = (
-  image,
+  file,
   title,
   brand,
   description,
@@ -55,13 +57,13 @@ export const postProduct = (
   stock
 ) => ({
   type: "ADD_PRODUCT",
-  image,
+  file,
   title,
   brand,
   description,
   colour,
   capacity,
   price,
-  stock
+  stock,
 });
 // end post product data

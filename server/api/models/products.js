@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const products = sequelize.define('products', {
-    image: DataTypes.TEXT,
+    file: DataTypes.TEXT,
     title: DataTypes.STRING,
     brand: DataTypes.STRING,
     description: DataTypes.TEXT,

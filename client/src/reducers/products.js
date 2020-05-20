@@ -7,11 +7,10 @@ const products = (state = [], action) => {
       })
     case 'LOAD_PRODUCT_FAILURE':
     case 'POST_PRODUCT':
-      console.log(action)
       return [
         ...state,
         {
-          image: action.image,
+          file: action.file,
           title: action.title,
           brand: action.brand,
           description: action.description,

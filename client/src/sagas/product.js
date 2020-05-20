@@ -16,12 +16,12 @@ const read = async (path) =>
     .catch((err) => err);
 
 const add = async (path, params) => {
-  console.log(params, 'data')
+  console.log(params, "data");
   return await request
     .post(path, params)
     .then((response) => response.data)
     .catch((err) => err);
-  }
+};
 
 const PATH = "products";
 
@@ -36,9 +36,27 @@ function* loadProduct() {
 }
 
 function* postProduct(payload) {
-  const { image, title, brand, description, colour, capacity, price, stock } = payload;
+  const {
+    image,
+    title,
+    brand,
+    description,
+    colour,
+    capacity,
+    price,
+    stock,
+  } = payload;
   yield put(
-    actions.postProductRedux(image, title, brand, description, colour, capacity, parseInt(price), parseInt(stock))
+    actions.postProductRedux(
+      image,
+      title,
+      brand,
+      description,
+      colour,
+      capacity,
+      price,
+      stock
+    )
   );
   try {
     const data = yield call(add, PATH, {
@@ -49,7 +67,7 @@ function* postProduct(payload) {
       colour,
       capacity,
       price,
-      stock
+      stock,
     });
     yield put(actions.postProductSuccess(data));
     history.push("/");
