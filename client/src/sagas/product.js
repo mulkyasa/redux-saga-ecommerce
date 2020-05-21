@@ -37,7 +37,7 @@ function* loadProduct() {
 
 function* postProduct(payload) {
   const {
-    image,
+    file,
     title,
     brand,
     description,
@@ -48,7 +48,7 @@ function* postProduct(payload) {
   } = payload;
   yield put(
     actions.postProductRedux(
-      image,
+      file,
       title,
       brand,
       description,
@@ -59,15 +59,26 @@ function* postProduct(payload) {
     )
   );
   try {
-    const data = yield call(add, PATH, {
-      image,
+    const itemSent = {
+      ...(file && { file }),
       title,
       brand,
       description,
-      colour,
-      capacity,
+      ...(colour instanceof Array && { colour: JSON.stringify(colour) }),
+      ...(capacity instanceof Array && {
+        capacity: JSON.stringify(capacity),
+      }),
       price,
       stock,
+    };
+    const formData = new FormData();
+    Object.keys(itemSent).forEach((key) => {
+      formData.append(key, itemSent[key]);
+    });
+    const data = yield call(add, PATH, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
     });
     yield put(actions.postProductSuccess(data));
     history.push("/");

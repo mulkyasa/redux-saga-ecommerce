@@ -43,7 +43,6 @@ class AddForm extends Component {
     this.setState({
       colour: [...this.state.colour, this.state.colourInput],
     });
-    console.log(this.state.colour, this.state.colourInput)
     this.setState({
       colourInput: "",
     });
