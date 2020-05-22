@@ -83,14 +83,31 @@ class AddForm extends Component {
   handleInputChange = (event) => {
     let { name, value } = event.target;
     this.setState({ [name]: value });
-    console.log([name], value);
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.postProduct({
-      ...this.state,
-    });
+    this.props.postProduct(
+      this.state.file,
+      this.state.title,
+      this.state.brand,
+      this.state.description,
+      this.state.colour,
+      this.state.capacity,
+      this.state.price,
+      this.state.stock,
+    );
+    console.log(
+      this.state.file,
+      this.state.title,
+      this.state.brand,
+      this.state.description,
+      this.state.colour,
+      this.state.capacity,
+      this.state.price,
+      this.state.stock,
+      "submit"
+    )
   };
 
   render() {
@@ -210,7 +227,25 @@ class AddForm extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  postProduct: (item) => dispatch(postProduct(item)),
+  postProduct: (
+    file,
+    title,
+    brand,
+    description,
+    colour,
+    capacity,
+    price,
+    stock
+  ) => dispatch(postProduct(
+    file,
+    title,
+    brand,
+    description,
+    colour,
+    capacity,
+    price,
+    stock
+  )),
 });
 
 export default connect(null, mapDispatchToProps)(AddForm);

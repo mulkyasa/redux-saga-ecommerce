@@ -16,8 +16,7 @@ const read = async (path) =>
     .catch((err) => err);
 
 const add = async (path, params) => {
-  console.log(params, "data");
-  return await request
+  await request
     .post(path, params)
     .then((response) => response.data)
     .catch((err) => err);
@@ -59,7 +58,7 @@ function* postProduct(payload) {
     )
   );
   try {
-    const itemSent = {
+    let itemSent = {
       ...(file && { file }),
       title,
       brand,
@@ -80,6 +79,8 @@ function* postProduct(payload) {
         "Content-Type": "multipart/form-data",
       },
     });
+    console.log(itemSent, "itemSent")
+    console.log(data, "data")
     yield put(actions.postProductSuccess(data));
     history.push("/");
   } catch (error) {
