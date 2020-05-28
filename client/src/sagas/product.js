@@ -79,8 +79,8 @@ function* postProduct(payload) {
         "Content-Type": "multipart/form-data",
       },
     });
-    console.log(itemSent, "itemSent")
-    console.log(data, "data")
+    console.log(itemSent, "itemSent");
+    console.log(data, "data");
     yield put(actions.postProductSuccess(data));
     history.push("/");
   } catch (error) {
