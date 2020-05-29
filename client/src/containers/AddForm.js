@@ -66,18 +66,10 @@ class AddForm extends Component {
   };
 
   deleteColourVariation = (event) => {
-    const array = [...this.state.colour];
-    const index = array.indexOf(event.target.value);
-
-    if (index !== -1) {
-      array.splice(index, 1);
-      this.setState({ colour: array });
-    }
-
-    // event.preventDefault();
-    // this.setState((state) => ({
-    //   colour: state.colour.slice(0, state.colour.length - 1)
-    // }));
+    event.preventDefault();
+    this.setState((state) => ({
+      colour: state.colour.slice(0, state.colour.length - 1)
+    }));
   }
 
   handleInputChange = (event) => {

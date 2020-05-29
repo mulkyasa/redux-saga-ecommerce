@@ -105,9 +105,9 @@ export function Form(props) {
                 <div className="card mt-2">
                   <div className="card-body py-1 px-2">
                     {item}
-                    {/* <a href="#" onClick={props.deleteVariation} className="ml-2">
+                    <a href="#" onClick={props.deleteVariation} className="ml-2">
                       <i className="far fa-times-circle text-dark"></i>
-                    </a> */}
+                    </a>
                   </div>
                 </div>
               </div>
