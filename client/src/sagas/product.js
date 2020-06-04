@@ -74,6 +74,7 @@ function* postProduct(payload) {
     Object.keys(itemSent).forEach((key) => {
       formData.append(key, itemSent[key]);
     });
+    console.log(formData, "formData");
     const data = yield call(add, PATH, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
