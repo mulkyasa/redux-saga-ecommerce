@@ -68,9 +68,9 @@ class AddForm extends Component {
   deleteColourVariation = (event) => {
     event.preventDefault();
     this.setState((state) => ({
-      colour: state.colour.slice(0, state.colour.length - 1)
+      colour: state.colour.slice(0, state.colour.length - 1),
     }));
-  }
+  };
 
   handleInputChange = (event) => {
     let { name, value } = event.target;
@@ -87,7 +87,7 @@ class AddForm extends Component {
       this.state.colour,
       this.state.capacity,
       this.state.price,
-      this.state.stock,
+      this.state.stock
     );
     console.log(
       this.state.file,
@@ -99,7 +99,17 @@ class AddForm extends Component {
       this.state.price,
       this.state.stock,
       "submit"
-    )
+    );
+    this.setState({
+      file: {},
+      title: "",
+      brand: "",
+      description: "",
+      colour: [],
+      capacity: [],
+      price: "",
+      stock: "",
+    });
   };
 
   render() {
@@ -119,7 +129,7 @@ class AddForm extends Component {
       addCapacityVariation,
       colourVariationChange,
       capacityVariationChange,
-      deleteColourVariation
+      deleteColourVariation,
     } = this;
 
     let forms = [
@@ -151,7 +161,7 @@ class AddForm extends Component {
         value: colour,
         input: colourInput,
         onChange: colourVariationChange,
-        deleteVariation: deleteColourVariation
+        deleteVariation: deleteColourVariation,
       },
       {
         name: "capacity",
@@ -228,16 +238,19 @@ const mapDispatchToProps = (dispatch) => ({
     capacity,
     price,
     stock
-  ) => dispatch(postProduct(
-    file,
-    title,
-    brand,
-    description,
-    colour,
-    capacity,
-    price,
-    stock
-  )),
+  ) =>
+    dispatch(
+      postProduct(
+        file,
+        title,
+        brand,
+        description,
+        colour,
+        capacity,
+        parseInt(price),
+        parseInt(stock)
+      )
+    ),
 });
 
 export default connect(null, mapDispatchToProps)(AddForm);
